@@ -1,0 +1,543 @@
+/* Base reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: radial-gradient(circle at top, #ffe6f0 0, #ffffff 45%, #ffd3e4 100%);
+    color: #3b1023;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.valentine-layout {
+    width: min(1120px, 100% - 2.5rem);
+}
+
+.valentine-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.valentine-text {
+    max-width: 30rem;
+}
+
+.polaroid-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.hover-hint {
+    font-size: 0.8rem;
+    color: #a45a7c;
+    margin-bottom: 0.2rem;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    color: #ff5c8a;
+    margin-bottom: 0.6rem;
+}
+
+.valentine-text h1 {
+    font-size: clamp(3.2rem, 7vw, 4.2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.subtitle {
+    margin-top: 1rem;
+    font-size: 1rem;
+    max-width: 26rem;
+    color: #7a3355;
+}
+
+.polaroid-stack {
+    position: relative;
+    width: 440px;
+    height: 280px;
+}
+
+.polaroid {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 170px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
+    padding: 0.6rem 0.6rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.polaroid-photo {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    background: repeating-linear-gradient(135deg, #ffd3e4 0, #ffd3e4 6px, #ffe6f0 6px, #ffe6f0 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #7a3355;
+}
+
+.polaroid-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    display: block;
+}
+
+.polaroid-caption {
+    margin-top: 0.4rem;
+    font-size: 0.7rem;
+    color: #a45a7c;
+    text-align: center;
+}
+
+.polaroid-1 { transform: rotate(-6deg) translate(-60px, 10px); }
+.polaroid-2 { transform: rotate(4deg) translate(-10px, -12px); }
+.polaroid-3 { transform: rotate(0deg) translate(30px, 0); }
+.polaroid-4 { transform: rotate(7deg) translate(70px, 18px); }
+.polaroid-5 { transform: rotate(-9deg) translate(-5px, 30px); }
+
+.stack-message {
+    max-width: 15rem;
+    font-size: 0.85rem;
+    color: #7a3355;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 220ms ease-out, transform 220ms ease-out;
+}
+
+.polaroid-area:hover .stack-message {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.polaroid-area:hover .polaroid-1 { transform: rotate(-18deg) translate(-170px, 20px); }
+.polaroid-area:hover .polaroid-2 { transform: rotate(10deg) translate(-70px, -60px); }
+.polaroid-area:hover .polaroid-3 { transform: rotate(0deg) translate(40px, -30px); }
+.polaroid-area:hover .polaroid-4 { transform: rotate(16deg) translate(150px, 40px); }
+.polaroid-area:hover .polaroid-5 { transform: rotate(-20deg) translate(20px, 90px); }
+
+@media (max-width: 800px) {
+    .valentine-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .valentine-text {
+        max-width: 100%;
+    }
+
+    .polaroid-stack {
+        width: 220px;
+        height: 220px;
+    }
+
+    .polaroid {
+        width: 170px;
+    }
+}
+
+@media (max-width: 480px) {
+    .valentine-layout {
+        width: min(100% - 1.5rem, 420px);
+    }
+
+    .valentine-text h1 {
+        font-size: clamp(2.6rem, 9vw, 3.2rem);
+    }
+}
+
+.timeline-item p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+/* Memories */
+.section-memories .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+}
+
+.memory-card {
+    position: relative;
+    background: linear-gradient(145deg, rgba(10, 6, 18, 0.98), rgba(41, 9, 61, 0.98));
+    border-radius: var(--radius-lg);
+    padding: 1.4rem 1.4rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 55px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+}
+
+.memory-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255, 159, 191, 0.27), transparent 60%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity var(--transition-med);
+}
+
+.memory-card:hover::after {
+    opacity: 1;
+}
+
+.memory-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.16rem 0.75rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    background: rgba(255, 92, 138, 0.16);
+    border: 1px solid rgba(255, 92, 138, 0.55);
+    color: var(--accent-soft);
+    margin-bottom: 0.75rem;
+}
+
+.memory-card h3 {
+    font-size: 1.08rem;
+    margin-bottom: 0.45rem;
+}
+
+.memory-card p {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+}
+
+.photo-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    color: rgba(200, 169, 183, 0.9);
+    font-size: 0.9rem;
+}
+
+/* Love notes */
+.section-notes .notes-wrapper {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.4fr);
+    gap: 1.6rem;
+}
+
+.note-form {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.6rem 1.4rem 1.6rem;
+    border: 1px solid var(--border-soft);
+    box-shadow: 0 16px 55px rgba(0, 0, 0, 0.55);
+}
+
+.note-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.45rem;
+    display: block;
+}
+
+#note-input {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(7, 3, 14, 0.9);
+    padding: 0.8rem 0.85rem;
+    color: var(--text-main);
+    resize: vertical;
+    min-height: 110px;
+    font-size: 0.93rem;
+    outline: none;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+#note-input::placeholder {
+    color: rgba(200, 169, 183, 0.7);
+}
+
+#note-input:focus-visible {
+    border-color: var(--accent-soft);
+    box-shadow: 0 0 0 1px rgba(255, 159, 191, 0.4);
+    background: rgba(12, 4, 24, 0.96);
+}
+
+.note-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 0.9rem;
+}
+
+.note-hint {
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.pinned-notes {
+    display: grid;
+    gap: 1rem;
+}
+
+.note-card {
+    position: relative;
+    background:
+        radial-gradient(circle at top left, rgba(255, 92, 138, 0.25), transparent 55%),
+        rgba(10, 6, 18, 0.96);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.1rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 55px rgba(0, 0, 0, 0.55);
+    font-size: 0.95rem;
+}
+
+.note-card::before {
+    content: "♥";
+    position: absolute;
+    top: 0.9rem;
+    right: 1.1rem;
+    font-size: 0.9rem;
+    color: var(--accent-soft);
+}
+
+.note-text {
+    white-space: pre-wrap;
+}
+
+.note-meta {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* Buttons */
+.btn {
+    border-radius: var(--radius-pill);
+    border: 1px solid transparent;
+    padding: 0.55rem 1.45rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.btn.primary {
+    background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+    color: white;
+    box-shadow: 0 18px 45px rgba(255, 92, 138, 0.55);
+}
+
+.btn.primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 55px rgba(255, 92, 138, 0.72);
+}
+
+.btn.ghost {
+    background: rgba(10, 6, 18, 0.8);
+    border-color: rgba(255, 159, 191, 0.55);
+    color: var(--accent-soft);
+}
+
+.btn.ghost:hover {
+    background: rgba(20, 9, 35, 0.9);
+    border-color: rgba(255, 159, 191, 0.85);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn:focus-visible {
+    outline: 2px solid rgba(255, 159, 191, 0.9);
+    outline-offset: 2px;
+}
+
+/* Modal */
+.love-note-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: radial-gradient(circle at top, rgba(8, 0, 16, 0.4), rgba(0, 0, 0, 0.9));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-med);
+    z-index: 50;
+}
+
+.love-note-modal.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.love-note-dialog {
+    width: min(420px, 100%);
+    background:
+        radial-gradient(circle at top left, rgba(255, 92, 138, 0.32), transparent 60%),
+        rgba(10, 6, 18, 0.98);
+    border-radius: 24px;
+    padding: 1.9rem 1.6rem 1.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 26px 85px rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(3, 0, 8, 0.8);
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.close-modal:hover {
+    background: rgba(25, 10, 40, 0.96);
+}
+
+.modal-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    color: var(--accent-soft);
+    margin-bottom: 0.7rem;
+}
+
+.modal-text {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Site footer */
+.site-footer {
+    width: min(1120px, 100% - 3rem);
+    margin: 0 auto 2.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Floating click hearts */
+.click-heart {
+    position: fixed;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 40;
+    transform: translate(-50%, -50%);
+    animation: float-heart 1s ease-out forwards;
+}
+
+.click-heart svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes float-heart {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -30%);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -120%);
+    }
+}
+
+/* Utilities */
+@media (max-width: 800px) {
+    .site-header {
+        gap: 0.7rem;
+        padding-inline: 1rem;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    main {
+        margin-top: 6.1rem;
+        width: min(100% - 2rem, 640px);
+    }
+
+    .hero-content {
+        padding: 2.2rem 1.6rem 2.1rem;
+    }
+
+    .section-notes .notes-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .site-header {
+        padding-inline: 0.9rem;
+        width: min(100% - 1.5rem, 480px);
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    main {
+        margin-top: 5.4rem;
+        width: min(100% - 1.6rem, 460px);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+}
