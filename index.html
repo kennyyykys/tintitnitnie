@@ -1,52 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>V DAYYYY</title>
-    <link rel="stylesheet" href="styles.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Happy Valentine’s Day</title>
+	<link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-    <main class="valentine-layout">
-        <section class="valentine-card">
-            <div class="valentine-text">
-                <h1>Happy Valentine's Day</h1>
-                <p class="subtitle">Happy Valentine's Day, My Babyyyy <33.</p>
-            </div>
-            <div class="polaroid-area">
-                <p class="hover-hint">(hover your mouse here)</p>
-                <div class="polaroid-stack">
-                    <div class="polaroid polaroid-1">
-                        <div class="polaroid-photo">
-                                <img src="6ca63154-0a95-43b7-9e1c-24f06f3ee0ef.jpg" alt="Photo 1" />
-                        </div>
-                        </div>
-                        <div class="polaroid polaroid-2">
-                            <div class="polaroid-photo">
-                                <img src="a26a0c2b-7f7e-43b9-b36c-731c00cd5153.jpg" alt="Photo 2" />
-                            </div>
-                        </div>
-                        <div class="polaroid polaroid-3">
-                            <div class="polaroid-photo">
-                                <img src="e60de52d-2a7e-4324-98da-738364f16597.jpg" alt="Photo 3" />
-                            </div>
-                        </div>
-                        <div class="polaroid polaroid-4">
-                            <div class="polaroid-photo">
-                                <img src="f410dd59-da14-4c73-9776-593e3ad9beeb.jpg" alt="Photo 4" />
-                            </div>
-                        </div>
-                        <div class="polaroid polaroid-5">
-                            <div class="polaroid-photo">
-                                <img src="fc365ca1-698c-4408-a5dd-5a80841c925e.jpg" alt="Photo 5" />
-                            </div>
-                        </div>
-                </div>
-                <p class="stack-message">HAPPY VALENTINE'S DAY BABYYY. You make my world colorful and worth living for. You always make me feel happy, loved, and safe. I am sooo grateful for alll the memories we've made togetherrr. ALSOO ITS OUR SECOND VALENTINESSS YEYEYEYEYYY</p>
-            </div>
-        </section>
-    </main>
 
-    <script src="script.js"></script>
+<body>
+	<div class="bg-hearts" aria-hidden="true"></div>
+
+	<header class="site-header">
+		<nav class="nav" aria-label="Sections">
+			<button class="nav-link" data-nav="landing" type="button">Home</button>
+			<button class="nav-link" data-nav="reasons" type="button">Reasons</button>
+			<button class="nav-link" data-nav="gallery" type="button">Gallery</button>
+			<button class="nav-link" data-nav="letter" type="button">Letter</button>
+			<button class="nav-link" data-nav="games" type="button">Game</button>
+		</nav>
+	</header>
+
+	<main class="shell">
+		<!-- Landing -->
+		<section class="page is-active" id="landing" data-page>
+			<div class="card hero">
+				<h1 class="title">Happy Valentine’s Day, <span class="name">Christine</span> <span aria-hidden="true">❤️</span></h1>
+				<div class="hero-actions">
+					<button class="btn primary" id="start-btn" type="button">Click</button>
+				</div>
+				<p class="hint">Tip: click the background for little hearts.</p>
+			</div>
+		</section>
+
+		<!-- Reasons -->
+		<section class="page" id="reasons" data-page>
+			<div class="card">
+				<h2 class="section-title">Reasons why I love you</h2>
+				<p class="section-subtitle">Press the button to reveal one at a time.</p>
+
+				<div class="reasons-layout">
+					<div class="reasons-left">
+						<button class="btn primary" id="reveal-reason" type="button">Reveal a reason 💌</button>
+						<button class="btn ghost" id="reset-reasons" type="button">Reset</button>
+						<div class="reason-card" id="reason-card" aria-live="polite" aria-atomic="true">
+							<p class="reason-index" id="reason-index">Reason #1</p>
+							<p class="reason-text" id="reason-text">(click reveal)</p>
+						</div>
+					</div>
+
+					<div class="reasons-right">
+						<p class="mini-hint">Or click the floating hearts:</p>
+						<div class="heart-field" id="heart-field" aria-label="Floating hearts"></div>
+					</div>
+				</div>
+
+				<div class="page-actions">
+					<button class="btn ghost" data-next="landing" type="button">Back</button>
+					<button class="btn primary" data-next="gallery" type="button">Next</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Gallery -->
+		<section class="page" id="gallery" data-page>
+			<div class="card">
+				<h2 class="section-title">Photo / memory gallery</h2>
+				<p class="section-subtitle">Tap arrows or click an image to open it.</p>
+
+				<div class="gallery">
+					<button class="icon-btn" id="prev-photo" type="button" aria-label="Previous photo">‹</button>
+					<div class="gallery-stage">
+						<img id="gallery-image" alt="Memory" />
+					</div>
+					<button class="icon-btn" id="next-photo" type="button" aria-label="Next photo">›</button>
+				</div>
+				<div class="gallery-meta">
+					<div class="dots" id="gallery-dots" aria-label="Gallery dots"></div>
+				</div>
+
+				<div class="page-actions">
+					<button class="btn ghost" data-next="reasons" type="button">Back</button>
+					<button class="btn primary" data-next="letter" type="button">Next</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Love letter -->
+		<section class="page" id="letter" data-page>
+			<div class="card">
+				<h2 class="section-title">Dear Christine,</h2>
+
+				<div class="letter">
+					<div class="letter-paper" role="region" aria-label="Love letter">
+						<p class="letter-body" id="letter-body"></p>
+						<p class="letter-from" id="letter-from"></p>
+					</div>
+
+					<div class="letter-actions">
+						<button class="btn primary" id="retype-letter" type="button">Type it again ✍️</button>
+						<button class="btn ghost" id="instant-letter" type="button">Show instantly</button>
+					</div>
+				</div>
+
+				<div class="page-actions">
+					<button class="btn ghost" data-next="gallery" type="button">Back</button>
+					<button class="btn primary" data-next="games" type="button">Next</button>
+				</div>
+			</div>
+		</section>
+
+		<!-- Games -->
+		<section class="page" id="games" data-page>
+			<div class="card">
+				<h2 class="section-title">Minigamee timee</h2>
+
+				<div class="games-grid">
+					<section class="game" aria-label="Quiz">
+						<h3 class="game-title">How well do you know me?</h3>
+						<div class="quiz" id="quiz"></div>
+						<div class="quiz-actions">
+							<button class="btn primary" id="submit-quiz" type="button">Check answers</button>
+							<button class="btn ghost" id="reset-quiz" type="button">Reset</button>
+						</div>
+						<p class="quiz-result" id="quiz-result" aria-live="polite"></p>
+					</section>
+				</div>
+
+				<div class="forever">
+					<h3 class="forever-title">Be my Valentine forever?</h3>
+					<button class="btn primary forever-btn" id="forever-btn" type="button">YES 😤💗</button>
+					<p class="forever-note" id="forever-note" aria-live="polite"></p>
+				</div>
+
+				<div class="page-actions">
+					<button class="btn ghost" data-next="letter" type="button">Back</button>
+					<button class="btn primary" data-next="landing" type="button">Back to top</button>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<!-- Lightbox -->
+	<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+		<button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close">×</button>
+		<img class="lightbox-image" id="lightbox-image" alt="Expanded memory" />
+	</div>
+
+	<audio id="bg-music" preload="auto" loop></audio>
+
+	<script src="script.js"></script>
 </body>
 </html>
